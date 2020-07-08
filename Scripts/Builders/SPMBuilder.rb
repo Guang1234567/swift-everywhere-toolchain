@@ -33,19 +33,20 @@ class SPMBuilder < Builder
       @swift = SwiftSPMBuilder.new()
       @args = []
       # @args << "-v"
-      @args << "--swiftc \"#{@swift.builds}/bin/swiftc\""
-      @args << "--sbt #{@llb.builds}/bin/swift-build-tool"
+      @args << "--swiftc-path \"#{@swift.builds}/bin/swiftc\""
+      #@args << "--sbt #{@llb.builds}/bin/swift-build-tool"
       @args << "--release"
       @args << "--build #{@builds} --prefix #{@installs}"
-      @args << "--llbuild-build-dir #{@llb.builds} --llbuild-source-dir #{@llb.sources}"
+      @args << "--llbuild-build-dir #{@llb.builds}"
+      #@args << "--llbuild-source-dir #{@llb.sources}"
    end
 
    def executeBuild
-      execute "cd #{@sources} && Utilities/bootstrap #{@args.join(' ')}"
+      execute "cd #{@sources} && Utilities/bootstrap build #{@args.join(' ')}"
    end
 
    def executeClean
-      execute "cd #{@sources} && Utilities/bootstrap clean #{@args.join(' ')}"
+      execute "cd #{@sources} && Utilities/bootstrap clean --build #{@builds} -v"
    end
 
    def executeInstall

@@ -184,6 +184,7 @@ class Automation < Tool
       elsif component == "deps" then cleanDeps()
       elsif component == "libs" then cleanLibs()
       elsif component == "swift" then SwiftBuilder.new().clean
+      elsif component == "swift-spm" then SwiftSPMBuilder.new().clean
       elsif component == "spm" then SPMBuilder.new().clean
       elsif component == "llb" then LLBBuilder.new().clean
       else
@@ -197,6 +198,9 @@ class Automation < Tool
       elsif component == "swift" then SwiftBuilder.new().install
       elsif component == "llvm" then LLVMBuilder.new().install
       elsif component == "foundation" then @archsToBuild.each { |arch| FoundationBuilder.new(arch).install }
+      elsif component == "llb" then LLBBuilder.new().install
+      elsif component == "spm" then SPMBuilder.new().install
+      elsif component == "swift-spm" then SwiftSPMBuilder.new().install
       else
          puts "! Unknown component \"#{component}\"."
          usage()
@@ -270,7 +274,7 @@ class Automation < Tool
      files << "#{sourcesDir}/#{Lib.cmark}/COPYING"
      files << "#{sourcesDir}/#{Lib.curl}/COPYING"
      files << "#{sourcesDir}/#{Lib.icu}/icu4c/LICENSE"
-     files << "#{sourcesDir}/#{Lib.llvm}/LICENSE.TXT"
+     files << "#{sourcesDir}/#{Lib.llvm}/LICENSE.txt"
      files << "#{sourcesDir}/#{Lib.llvm}/clang/LICENSE.TXT"
      files << "#{sourcesDir}/#{Lib.llvm}/compiler-rt/LICENSE.TXT"
      files << "#{sourcesDir}/#{Lib.ssl}/LICENSE"
@@ -290,13 +294,26 @@ class Automation < Tool
       moduleMaps.each { |file|
          puts "* Correcting \"#{file}\""
          contents = File.read(file)
-         contents = contents.gsub(/header\s+\".+sysroot/, "header \"/usr/local/ndk/sysroot")
+         contents = contents.gsub(/header\s+\".+sysroot\/usr/, "header \"../../../..")
          File.write(file, contents)
       }
    end
 
    def copyToolchainFiles()
      toolchainDir = "#{Config.toolchainDir}/usr"
+     
+     root = LLBBuilder.new().installs
+     files = Dir["#{root}/bin/**/*"]
+     files += Dir["#{root}/lib/**/*"]
+     files += Dir["#{root}/share/**/*"]
+     copyFiles(files, root, toolchainDir)
+     
+     root = SPMBuilder.new().installs
+     files = Dir["#{root}/bin/**/*"]
+     files += Dir["#{root}/lib/**/*"]
+     files += Dir["#{root}/share/**/*"]
+     copyFiles(files, root, toolchainDir)
+     
      root = SwiftBuilder.new().installs
      files = Dir["#{root}/bin/**/*"]
      files += Dir["#{root}/lib/**/*"]
@@ -378,7 +395,7 @@ class Automation < Tool
    end
 
    def test()
-      ndkDir = "/usr/local/ndk"
+      ndkDir = "/Users/travis/dev_kit/sdk/android_sdk/ndk-bundle"
       toolchainName = isMacOS? ? "darwin-x86_64" : "linux-x86_64"
       testFile = "#{ndkDir}/toolchains/llvm/prebuilt/#{toolchainName}"
       if !Dir.exist?(testFile)
@@ -436,6 +453,9 @@ class Automation < Tool
       SwiftBuilder.new().make
       @archsToBuild.each { |arch| DispatchBuilder.new(arch).make }
       @archsToBuild.each { |arch| FoundationBuilder.new(arch).make }
+      SwiftSPMBuilder.new().make
+      LLBBuilder.new().make
+      SPMBuilder.new().make
    end
 
    def cleanDeps()

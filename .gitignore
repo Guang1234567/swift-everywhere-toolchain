@@ -3,7 +3,7 @@
 .DS_Store
 
 /ToolChain
-/local.properties.yml
+#/local.properties.yml
 /*.code-workspace
 /.favorites.json
 /*.bbprojectd

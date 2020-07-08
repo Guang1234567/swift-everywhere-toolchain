@@ -1,0 +1,85 @@
+language: generic
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode11.5
+      env: 
+        - NDK_URL="https://dl.google.com/android/repository/android-ndk-r20b-darwin-x86_64.zip"
+        - ANDROID_HOME=$HOME/dev_kit/sdk/android_sdk/
+        - NDK_HOME=$HOME/dev_kit/sdk/android_sdk/ndk-bundle
+
+git:
+  submodules: true
+  depth: 5
+
+branches:
+  only:
+    - master
+    - stable
+    - /^(?i:swift)-.*-(?i:release)$/
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+  - brew cleanup
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+    - $HOME/Library/Caches/Homebrew
+    - $ANDROID_HOME
+    - $HOME/build/Guang1234567/swift-everywhere-toolchain/ToolChain
+
+
+before_install:
+  - pwd
+  - xcode-select --print-path
+  - wget -c -P $ANDROID_HOME $NDK_URL
+  - unzip -qq -d $ANDROID_HOME $ANDROID_HOME/android-ndk-r20b-darwin-x86_64.zip
+  - rm -rf $NDK_HOME
+  - mv $ANDROID_HOME/android-ndk-r20b $NDK_HOME
+  - ls -al $ANDROID_HOME
+  - ls -al $NDK_HOME
+  - export ANDROID_HOME=$ANDROID_HOME
+  - export ANDROID_SDK=$ANDROID_HOME
+  - export ANDROID_SDK_ROOT=$ANDROID_HOME
+  - export ANDROID_NDK_HOME=$NDK_HOME
+  - export ANDROID_NDK=$NDK_HOME
+  - export NDK_ROOT=$NDK_HOME
+  - export ANDROID_NDK_ROOT=$NDK_HOME
+
+addons:
+  homebrew:
+    packages:
+    - cmake
+    - ninja
+    - autoconf
+    - automake
+    - libtool
+    - pkg-config
+    - git-lfs
+    update: false
+
+
+script:
+  - pwd
+  - make
+#  - make checkout
+  - make bootstrap
+
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+#
+deploy:
+  provider: releases
+  api_key:
+    secure: Y1fkSiMXxU0wJEZ12PtfuWheTcIFD870iHpCRollKyVjobI50MF0yYWHm8jMtwHCYLKwmf+SZwp/w+emRZ6iho1n5yCo+zPeAcZSc2XCi7pzGzJ5kKvi3Lgh01BduTUI30+LqJ7XNk2HXH61Zl2eBZl4hFn6+Bc5BmCNyue2PKs2gVexpTub7X3abhdCR6frbdtC3lNW2HWiH/j4ccDE6Lmr1WJjFgM2QzoXVc56wWaUlXwOBPAmIG8AZM2nN7wKqV7znMJTNnE+hw7e1vtdLaV4QrNDDkya4f3Z1mgAJCNDQg8sIERvqdAg4NOh3Y090HR5QYHp8WejrvbKg/54KIdTE0L7TzLeYARG2NrqA0o4IezLGvbmlDL6vnwegNhSHp1IK89ZN2he/Tt4t0ONrcyKb7V4N6s5LKxzI24pvAjwG3pdqdO57iXus3CMksxaNW4F9ZaWaObSSi8zqFLqgyx8ZpTjy7zTso8xKyO/+/BpaD1BF8NJCzHKqgQmWbypyo4tNlRtyWsli7Eo2xcrEwTPU07CbYNbUnRfEj5hHc+Or/V0T6hgSnywaNs9crU9bedOn8Xh8myPamV17TGr282f7pwqCyIg+wms13PyhV5inNM7B7qbufXzQnM+Zu3OrBqKEVD7A1H3QxoLLhGJNe3gQKuFjXcC5Y/q68Y0WqQ=
+  file: "ToolChain/swift-android-toolchain.tar.gz"
+  on:
+    tags: true
+    branch: master
+  skip_cleanup: 'true'
+  draft: true

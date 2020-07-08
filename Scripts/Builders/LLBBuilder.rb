@@ -40,6 +40,7 @@ class LLBBuilder < Builder
       cmd << "-DCMAKE_BUILD_TYPE=Release"
       cmd << "-DLLBUILD_SUPPORT_BINDINGS=Swift"
       cmd << "-DSWIFTC_EXECUTABLE=\"#{@swift.builds}/bin/swiftc\""
+      cmd << "-DCMAKE_Swift_COMPILER=\"#{@swift.builds}/bin/swiftc\""
       cmd << @sources
       execute cmd.join(" ")
    end

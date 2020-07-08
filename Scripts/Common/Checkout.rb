@@ -36,8 +36,8 @@ class Checkout < Tool
       checkoutIfNeeded("#{Config.sources}/#{Lib.ssl}", "https://github.com/openssl/openssl.git", Revision.ssl)
       checkoutIfNeeded("#{Config.sources}/#{Lib.curl}", "https://github.com/curl/curl.git", Revision.curl)
       checkoutIfNeeded("#{Config.sources}/#{Lib.xml}", "https://github.com/GNOME/libxml2.git", Revision.xml)
-      # checkoutIfNeeded("#{Config.sources}/#{Lib.spm}", "https://github.com/apple/swift-package-manager.git", Revision.spm)
-      # checkoutIfNeeded("#{Config.sources}/#{Lib.llb}", "https://github.com/apple/swift-llbuild.git", Revision.llb)
+      checkoutIfNeeded("#{Config.sources}/#{Lib.spm}", "https://github.com/apple/swift-package-manager.git", Revision.spm)
+      checkoutIfNeeded("#{Config.sources}/#{Lib.llb}", "https://github.com/apple/swift-llbuild.git", Revision.llb)
    end
 
    def fetch()
@@ -56,7 +56,7 @@ class Checkout < Tool
 
    def fetchIfNeeded(localPath, repoURL, revision)
       if File.exist?(localPath)
-         execute "cd \"#{localPath}\" && git fetch --prune origin"
+         execute "cd \"#{localPath}\" && git fetch --prune origin && git fetch --all --tags --progress"
       else
          checkoutIfNeeded(localPath, repoURL, revision)
       end
@@ -87,7 +87,7 @@ class Checkout < Tool
    def checkoutRevision(localPath, revision)
       branch = branchName(revision)
       message "Checking out revision #{revision}"
-      execute "cd \"#{localPath}\" && git fetch --prune origin"
+      execute "cd \"#{localPath}\" && git fetch --prune origin && git fetch --all --tags --progress"
       # Disable warning about detached HEAD - https://stackoverflow.com/a/45652159/1418981
       execute "cd \"#{localPath}\" && git -c advice.detachedHead=false checkout #{revision}"
       execute "cd \"#{localPath}\" && git branch -f #{branch}"

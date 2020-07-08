@@ -27,7 +27,7 @@ class Revision
    # See also: $ToolChain/Sources/swift/utils/update_checkout/update-checkout-config.json
 
    def self.swift
-      return "b623e823d42841ab8b151fb9c092bb0f9f5084e6"
+      return "0bab712aea8f0eb74f3acc303d96857f697a98d8"
       # 1.0.55 @ 2020.05.18 @ origin/swift-5.2-branch: b623e823d42841ab8b151fb9c092bb0f9f5084e6
       # 1.0.54 @ 2020.03.24 @ swift-5.2-RELEASE: 443e9a41d1a7c1fcae280490144fcbf8461d3499 // This commit is gone now :0
       # 1.0.53 @ swift-DEVELOPMENT-SNAPSHOT-2020-01-13-a: 3b9014dc9acae3d95255a83befd85b52e7176acb
@@ -52,7 +52,6 @@ class Revision
 
    def self.foundation
       return "9a9402ba492bbae1cab2ef2d9f61c9d7c24659f9"
-      # 1.0.55 @ 16. April 2020 at 20:36:00 CEST @ swift-5.2.4-RELEASE: 9a9402ba492bbae1cab2ef2d9f61c9d7c24659f9
       # 1.0.54 @ 2020.03.18 @ swift-5.2-RELEASE: 8d0871530c52456278ef8c83cb049e6d70b28a6b
       # 1.0.53 @ swift-DEVELOPMENT-SNAPSHOT-2020-01-05-a: 62809e9e2f918e6c11e47cd6a8d858429c77b743
       # 1.0.53 @ swift-DEVELOPMENT-SNAPSHOT-2019-12-27-a: 86eec6148c1e4ef1c56dbd5e53c5cbf6d023f202
@@ -69,17 +68,21 @@ class Revision
    end
 
    def self.spm
+      # swift-5.2-branch @ 2020.02.28 @ 1.0.54 f2318da4f96b0607ade27eff51558206f57c2f98
+      # swift-5.1-branch @ 1.0.50 331fa5cb245be1e4e16640f20f123eb3461eeced
       # master @ 1.0.43 3dad9e7cfe20d1b48256afca13df293bdca870b9
       # swift-5.0-branch @ 1.0.43 3a57975e10be0b1a8b87992ddf3a49701036f96c
       # swift-5.1-branch @ 1.0.37 0996526dbf2d5adbdef4b133312e441c0deb3db7
-      return "3dad9e7cfe20d1b48256afca13df293bdca870b9"
+      return "b38b1cb61325a9d0e287d1ad9ffb5cfae38e7a22"
    end
 
    def self.llb
+      # swift-5.2-branch @ 2020.01.07 @ 1.0.53 fb7ebf0b06c0d7c45ca8e18b3371424503a38b5c
+      # swift-5.1-branch @ 1.0.50 f73b84bc1525998e5e267f9d830c1411487ac65e
       # master @ 1.0.43 5bf016632c0e85d835c63b84b43d3c887f01418f
       # swift-5.0-branch @ 1.0.43 4f77fc47e2f5fcddc057abc8391f7c23d1e8d275
       # swift-5.1-branch @ 1.0.37 f73b84bc1525998e5e267f9d830c1411487ac65e
-      return "5bf016632c0e85d835c63b84b43d3c887f01418f"
+      return "d6dd04202d509f91d61aef89236db0da8f27d356"
    end
 
    def self.llvm
