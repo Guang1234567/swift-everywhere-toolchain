@@ -27,7 +27,7 @@ class Revision
    # See also: $ToolChain/Sources/swift/utils/update_checkout/update-checkout-config.json
 
    def self.swift
-      return "0bab712aea8f0eb74f3acc303d96857f697a98d8"
+      return "71d85a7c28eed8f46241649a723ddf23989139c6"
       # 1.0.55 @ 2020.05.18 @ origin/swift-5.2-branch: b623e823d42841ab8b151fb9c092bb0f9f5084e6
       # 1.0.54 @ 2020.03.24 @ swift-5.2-RELEASE: 443e9a41d1a7c1fcae280490144fcbf8461d3499 // This commit is gone now :0
       # 1.0.53 @ swift-DEVELOPMENT-SNAPSHOT-2020-01-13-a: 3b9014dc9acae3d95255a83befd85b52e7176acb
@@ -51,7 +51,7 @@ class Revision
    end
 
    def self.foundation
-      return "9a9402ba492bbae1cab2ef2d9f61c9d7c24659f9"
+      return "28267aafd965c3950a6d84fed1ec593257b82c58"
       # 1.0.54 @ 2020.03.18 @ swift-5.2-RELEASE: 8d0871530c52456278ef8c83cb049e6d70b28a6b
       # 1.0.53 @ swift-DEVELOPMENT-SNAPSHOT-2020-01-05-a: 62809e9e2f918e6c11e47cd6a8d858429c77b743
       # 1.0.53 @ swift-DEVELOPMENT-SNAPSHOT-2019-12-27-a: 86eec6148c1e4ef1c56dbd5e53c5cbf6d023f202
@@ -73,7 +73,7 @@ class Revision
       # master @ 1.0.43 3dad9e7cfe20d1b48256afca13df293bdca870b9
       # swift-5.0-branch @ 1.0.43 3a57975e10be0b1a8b87992ddf3a49701036f96c
       # swift-5.1-branch @ 1.0.37 0996526dbf2d5adbdef4b133312e441c0deb3db7
-      return "b38b1cb61325a9d0e287d1ad9ffb5cfae38e7a22"
+      return "59866b68f14c71a36c00eb6b2076eb120c21b0a6"
    end
 
    def self.llb
@@ -86,14 +86,15 @@ class Revision
    end
 
    def self.llvm
-      return "c2133f2b08047708b17230b598cb789062143650"
+      return "c4513204aeb003122d2c69bd454ab8781298453b"
+      # swift-5.2.5-RELEASE: "c4513204aeb003122d2c69bd454ab8781298453b"
       # 1.0.54 @ 2020.03.23 @ swift-5.2-RELEASE: c2133f2b08047708b17230b598cb789062143650
       # 1.0.54 @ swift-5.1.5-RELEASE: 198fa1e3efcce2fd302f7aaa077aec443a82394b
       # 1.0.51 @ swift-DEVELOPMENT-SNAPSHOT-2020-01-03-a: 019936b2100dc33c8946928d424b5cff4211acea
    end
 
    def self.cmark
-      return "bfa95d55b535fa178f75484b5e8f82ae3d8517af"
+      return "68e209466644ce07dcb0b695ea4d55aac4f0b564"
       # 1.0.54 @ 2019.10.10 @ swift-5.2-RELEASE: bfa95d55b535fa178f75484b5e8f82ae3d8517af
       # 1.0.51 @ swift-DEVELOPMENT-SNAPSHOT-2020-01-03-a: 31e12547c4de3dfcacc69855d93298cb90fd4f27
       # 1.0.50 @ swift-DEVELOPMENT-SNAPSHOT-2019-10-14-a: bfa95d55b535fa178f75484b5e8f82ae3d8517af

@@ -50,7 +50,7 @@ class Builder < Tool
       else
          physicalCPUs = `grep -c ^processor /proc/cpuinfo`.to_i
       end
-      @numberOfJobs = [physicalCPUs - 1, 1].max
+      @numberOfJobs = [physicalCPUs - 1, 2].max
    end
 
    def lib

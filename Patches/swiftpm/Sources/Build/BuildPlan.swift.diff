@@ -1,0 +1,27 @@
+From 33daa7c7dd648e47c79cdb736aa9d0961795dcf4 Mon Sep 17 00:00:00 2001
+From: GuangGuang <lihansey163@163.com>
+Date: Wed, 28 Oct 2020 16:48:13 +0800
+Subject: [PATCH] patch
+
+---
+ Sources/Build/BuildPlan.swift | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Sources/Build/BuildPlan.swift b/Sources/Build/BuildPlan.swift
+index 410d1ee1..03e3d259 100644
+--- a/Sources/Build/BuildPlan.swift
++++ b/Sources/Build/BuildPlan.swift
+@@ -1284,7 +1284,9 @@ public class BuildPlan {
+                 case .swiftAST:
+                     buildProduct.swiftASTs.insert(description.moduleOutputPath)
+                 case .modulewrap:
+-                    buildProduct.objects += [description.wrappedModuleOutputPath]
++                    if !buildParameters.triple.isAndroid() {
++                        buildProduct.objects += [description.wrappedModuleOutputPath]
++                    }
+                 case nil:
+                     break
+                 }
+-- 
+2.24.3 (Apple Git-128)
+

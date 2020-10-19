@@ -53,4 +53,8 @@ class SPMBuilder < Builder
       execute "cd #{@sources} && Utilities/bootstrap install #{@args.join(' ')}"
    end
 
+   def configurePatches(shouldEnable = true)
+      configurePatchFile("#{@patches}/Sources/Build/BuildPlan.swift.diff", shouldEnable)
+   end
+
 end

@@ -82,7 +82,7 @@ class SwiftBuilder
       end
       @toolchainDir = File.dirname(File.dirname(File.dirname(__FILE__)))
       #@ndkPath = "/usr/local/ndk"
-      @ndkPath = "/Users/travis/dev_kit/sdk/android_sdk/ndk-bundle"
+      @ndkPath = "/Users/lihanguang/dev_kit/sdk/android_sdk/ndk-bundle"
       @ndkGccVersion = "4.9"
       @ndkToolChain = "#{@ndkPath}/toolchains/llvm/prebuilt/darwin-x86_64"
    end

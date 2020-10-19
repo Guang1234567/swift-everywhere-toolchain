@@ -3,5 +3,10 @@
       "Cmake",
       "LLVM",
       "Toolchain"
-   ]
+   ],
+   "files.associations": {
+      "*.md": "mdx",
+      "*.mdx": "markdown",
+      "*.inc": "cpp"
+   }
 }
