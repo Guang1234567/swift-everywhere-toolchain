@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * [#95] Swift and related components updated to v.5.3.1
 
 ## [1.0.61] - 2020-11-26
-* [#92] Android NDK updated to v.21.3.6528147
+* [#92] Android NDK updated to v.20.1.5948944
 
 ## [1.0.60] - 2020-11-23
 * [#89] Fixes compile error when building C++ sources using SPM.
