@@ -278,7 +278,7 @@ module.exports = class Automation extends Tool {
     this.print("6. (Optional) Clean toolchain build:", 32);
     this.print("   $ node main.js clean\n", 36);
 
-    this.print("Building certain component (i.e. llvm, icu, xml, ssl, curl, swift, stdlib, dispatch, foundation):\n", 33);
+    this.print("Building certain component (i.e. llvm, icu, xml, ssl, curl, swift, stdlib, dispatch, foundation, tsc, llb, spm):\n", 33);
 
     this.print("To build only certain component:", 32);
     this.print("   $ node main.js llvm:build\n", 36);

@@ -7,7 +7,7 @@ class Troubleshooter
       @sources = "#{@toolChain}/Sources"
       @builds = "#{@toolChain}/Build"
       @installs = "#{@toolChain}/Install"
-      @ndk = "/Volumes/Shared/Data/Android/sdk/ndk/20.1.5948944"
+      @ndk = "/Volumes/Shared/Data/Android/sdk/ndk/21.3.6528147"
       @build = "#{@currentDir}/Build"
       @cmd = "echo 'Base class does nothing'"
    end

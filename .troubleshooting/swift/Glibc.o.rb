@@ -12,9 +12,9 @@ class Builder < Troubleshooter
       -sdk #{@ndk}/sysroot
 
       -c -target armv7-none-linux-androideabi
-      "-I/Volumes/Shared/Data/Android/sdk/ndk/20.1.5948944/sources/android/support/include"
-      "-I/Volumes/Shared/Data/Android/sdk/ndk/20.1.5948944/sysroot/usr/include"
-      "-I/Volumes/Shared/Data/Android/sdk/ndk/20.1.5948944/sysroot/usr/include/arm-linux-androideabi"
+      "-I/Volumes/Shared/Data/Android/sdk/ndk/21.3.6528147/sources/android/support/include"
+      "-I/Volumes/Shared/Data/Android/sdk/ndk/21.3.6528147/sysroot/usr/include"
+      "-I/Volumes/Shared/Data/Android/sdk/ndk/21.3.6528147/sysroot/usr/include/arm-linux-androideabi"
       -resource-dir /Volumes/Shared/Git/MyProjects/swift-everywhere-toolchain/ToolChain/Build/darwin-armv7a/swift-stdlib/./lib/swift
       -O -module-cache-path /Volumes/Shared/Git/MyProjects/swift-everywhere-toolchain/ToolChain/Build/darwin-armv7a/swift-stdlib/./module-cache
       -no-link-objc-runtime -enable-library-evolution

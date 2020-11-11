@@ -15,19 +15,19 @@ class Builder < Troubleshooter
 # -Xcc -DDEPLOYMENT_TARGET_ANDROID -Xcc -DDEPLOYMENT_TARGET_LINUX -Xcc -DDEPLOYMENT_RUNTIME_SWIFT
 # -Xcc -D__ANDROID_API__=24 -D __ANDROID__
 
--tools-directory /usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin
-# -Xcc --sysroot=/usr/local/ndk/20.1.5948944/sysroot
-# -Xcc --sysroot=/usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/sysroot
-# -Xcc --sysroot=/usr/local/ndk/20.1.5948944/platforms/android-24/arch-arm
--Xclang-linker --sysroot=/usr/local/ndk/20.1.5948944/platforms/android-24/arch-arm
--Xclang-linker --gcc-toolchain=/usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64
-# -Xcc -I/usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/arm-linux-androideabi/asm
--Xcc -I/usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include
--Xcc -I/usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/arm-linux-androideabi
+-tools-directory /Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/bin
+# -Xcc --sysroot=/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/sysroot
+# -Xcc --sysroot=/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot
+# -Xcc --sysroot=/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/platforms/android-24/arch-arm
+-Xclang-linker --sysroot=/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/platforms/android-24/arch-arm
+-Xclang-linker --gcc-toolchain=/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64
+# -Xcc -I/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/arm-linux-androideabi/asm
+-Xcc -I/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include
+-Xcc -I/Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/include/arm-linux-androideabi
 
--L /usr/local/ndk/20.1.5948944/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a
--L /usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.9.x
--L /usr/local/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/arm-linux-androideabi/24
+-L /Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a
+-L /Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/lib/gcc/arm-linux-androideabi/4.9.x
+-L /Users/lihanguang/dev_kit/sdk/android_sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/arm-linux-androideabi/24
 -L /Volumes/Shared/Git/MyProjects/swift-everywhere-toolchain/ToolChain/swift-android-toolchain/usr/lib/swift/android/armv7
 
 -module-cache-path /Volumes/Shared/Git/MyProjects/swift-everywhere-toolchain/Tests/sample-exe/build/ModuleCache
